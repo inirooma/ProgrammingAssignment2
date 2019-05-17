@@ -28,7 +28,14 @@ cacheSolve <- function(x, ...) {
     return(m)
   }
   ma <- x$get()
-  m <- solve(ma, ...)
-  x$setInverse(m)
-  m
+  if (det(ma)!=0) { 
+    m <- solve(ma, ...)
+    x$setInverse(m)
+    m
+  }
+  else{ 
+    message("The given matrix is not singular")
+  
+  }
+ 
 }
